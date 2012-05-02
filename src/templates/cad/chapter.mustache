@@ -1,0 +1,46 @@
+<script type="x-mustache-tmpl" id="tmpl-chapter">
+<ul>
+    <li><a href="#tabs-1">in print</a></li>
+    <li><a href="#tabs-2">on a website</a></li>
+    <li><a href="#tabs-3">in a database</a></li>
+</ul>
+<div id="tabs-1">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Chapter/essay title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Book title:</div><div class="right"><input type="text" name="container-title" /></div>
+        {{> publication}}
+        {{> pages}}
+        <input type="hidden" name="type" value="chapter" />
+        {{> submit}}
+    </form>
+</div>
+<div id="tabs-2">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Chapter/essay title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Book title:</div><div class="right"><input type="text" name="container-title" /></div>
+        {{> publication}}
+        {{> pages}}
+        {{> urldoi}}
+        <input type="hidden" name="type" value="chapter" />
+        {{> submit}}
+    </form>
+</div>
+<div id="tabs-3">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Chapter/essay title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Book title:</div><div class="right"><input type="text" name="container-title" /></div>
+        {{> publication}}
+        {{> pages}}
+        <div class="left">Persistent URL:</div>
+        <div class="right">
+            <input type="text" name="URL"/>
+            <span class="hint">if no persistent URL, use database name</span>
+        </div>
+        <input type="hidden" name="type" value="chapter" />
+        {{> submit}}
+    </form>
+</div>
+</script>

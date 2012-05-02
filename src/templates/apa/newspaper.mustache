@@ -1,0 +1,40 @@
+<script type="x-mustache-tmpl" id="tmpl-newspaper">
+<ul>
+    <li><a href="#tabs-1">in print</a></li>
+    <li><a href="#tabs-2">on a website</a></li>
+    <li><a href="#tabs-3">in a database</a></li>
+</ul>
+<div id="tabs-1">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Newspaper title:</div><div class="right"><input type="text" name="container-title" /></div>
+        {{> issued}}
+        {{> pages}}
+        <input type="hidden" name="type" value="article-newspaper" />
+        {{> submit}}
+    </form>
+</div>
+<div id="tabs-2">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Newspaper title:</div><div class="right"><input type="text" name="container-title" /></div>
+        <div class="left">Electronically published:</div><div class="right"><input type="text" name="issued[raw]" placeholder="dd-mm-yyyy" class="medium"/></div>
+        <div class="left">Home page URL:</div><div class="right"><input type="text" name="URL" /></div>
+        <input type="hidden" name="type" value="article-newspaper" />
+        {{> submit}}
+    </form>
+</div>
+<div id="tabs-3">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Newspaper title:</div><div class="right"><input type="text" name="container-title" /></div>
+        {{> issued}}
+        <div class="left">Database URL:</div><div class="right"><input type="text" name="URL" /></div>
+        <input type="hidden" name="type" value="article-newspaper" />
+        {{> submit}}
+    </form>
+</div>
+</script>

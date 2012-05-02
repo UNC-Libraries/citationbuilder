@@ -1,0 +1,60 @@
+<script type="x-mustache-tmpl" id="tmpl-contributor">
+    <div class="left">Contributors:</div>
+    <div class="contributor" style="margin-left: 210px;">
+        <select name="contrib-type">
+            <option value="author">Author</option>
+            <option value="editor">Editor</option>
+            <option value="translator">Translator</option>
+        </select>
+        <input type="text" name="contrib-given" size="15" placeholder="First Name" class="medium"/>
+        <input type="text" name="contrib-middle" maxlength="1" size="2" placeholder="MI" class="short" />
+        <input type="text" name="contrib-family" size="15" placeholder="Last Name" class="medium"/>
+    </div>
+    <div class="contributor-button"><input type="button" name="addcontrib" value="Add Another" /></div>
+</script>
+
+<script type="x-mustache-tmpl" id="tmpl-publication">
+    <div class="left">Publication Info:</div>
+    <div class="right">
+        <input type="text" name="publisher" placeholder="Publisher" class="medium"/>
+        <input type="text" name="publisher-place" placeholder="Location" class="medium"/>
+        <input type="text" name="issued[date-parts][0][]" placeholder="Year" class="year" maxlength="4"/>
+    </div>
+</script>
+
+<script type="x-mustache-tmpl" id="tmpl-submit">
+    <input type="hidden" name="id" value="ITEM-1" />
+    <div class="right"><input type="submit" name="submit" value="Submit"/></div>
+</script>
+
+<script type="x-mustache-tmpl" id="tmpl-urldoi">
+    <div class="left">URL:</div><div class="right"><input type="text" name="URL" size="50"/></div>
+    <div class="right">OR</div>
+    <div class="left">DOI:</div><div class="right"><input type="text" name="DOI" size="50"/></div>
+</script>
+
+<script type="x-mustache-tmpl" id="tmpl-pages">
+    <div class="left">Pages:</div>
+    <div class="right">
+        <input type="text" name="page" class="medium"/>
+        <span class="hint">ex: 11-20, 30</span>
+    </div>
+</script>
+
+<script type="x-mustache-tmpl" id="tmpl-volume">
+    <div class="left">Volume information:</div>
+    <div class="right">
+        <input type="text" name="volume" placeholder="Volume" class="year"/>
+        <input type="text" name="issue" placeholder="Issue" class="year"/>
+    </div>
+</script>
+
+<script type="x-mustache-tmpl" id="tmpl-accessed">
+    <div class="left">URL:</div><div class="right"><input type="text" name="URL" /></div>
+    <div class="left">Date accessed:</div>
+    <div class="right"><input type="text" name="accessed[raw]" placeholder="dd-mm-yyyy" class="medium" /></div>
+</script>
+
+<script type="x-mustache-tmpl" id="tmpl-issued">
+    <div class="left">Date published:</div><div class="right"><input type="text" name="issued[raw]" placeholder="dd-mm-yyyy" class="medium" /></div>
+</script>

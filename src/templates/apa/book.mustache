@@ -1,0 +1,47 @@
+<script type="x-mustache-tmpl" id="tmpl-book">
+<ul>
+    <li><a href="#book-1">in print</a></li>
+    <li><a href="#book-2">on a website</a></li>
+    <li><a href="#book-3">in a database</a></li>
+    <li><a href="#book-4">as a digital file</a></li>
+</ul>
+<div id="book-1">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Title:</div><div class="right"><input type="text" name="title" class="long" /></div>
+        {{> publication}}
+        <input type="hidden" name="type" value="book" />
+        {{> submit}}
+    </form>
+</div>
+<div id="book-2">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Title:</div><div class="right"><input type="text" name="title" size="50"/></div>
+        {{> publication}}
+        {{> urldoi}}
+        <input type="hidden" name="type" value="book" />
+        {{> submit}}
+    </form>
+</div>
+<div id="book-3">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Title:</div><div class="right"><input type="text" name="title" size="50"/></div>
+        {{> publication}}
+        {{> urldoi}}
+        <input type="hidden" name="type" value="book" />
+        {{> submit}}
+    </form>
+</div>
+<div id="book-4">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Title:</div><div class="right"><input type="text" name="title" size="50"/></div>
+        {{> publication}}
+        {{> urldoi}}
+        <input type="hidden" name="type" value="book" />
+        {{> submit}}
+    </form>
+</div>
+</script>

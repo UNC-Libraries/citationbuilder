@@ -1,0 +1,17 @@
+<script id="tmpl-website" type="x-mustache-tmpl">
+<ul>
+    <li><a href="#tabs-1">on the internet</a></li>
+</ul>
+<div id="tabs-1">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Website title:</div><div class="right"><input type="text" name="container-title" /></div>
+        <div class="left">Site publisher / sponsor:</div><div class="right"><input type="text" name="publisher" /></div>
+        <div class="left">Electronically published:</div><div class="right"><input type="text" name="issued[raw]" /></div>
+        {{> accessed}}
+        <input type="hidden" name="type" value="webpage" />
+        {{> submit}}
+    </form>
+</div>
+</script>

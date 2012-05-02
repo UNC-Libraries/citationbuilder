@@ -1,0 +1,112 @@
+
+h2 {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #ccc;
+}
+
+input {
+    padding: 0.2em;
+}
+
+input[type=button] {
+    padding: 0;
+    width: 7em;
+}
+input[type=submit] {
+    width: 5em;
+}
+
+input.short {
+    width: 1.5em;
+}
+input.medium {
+    width: 8.5em;
+}
+input.year {
+    width: 3.5em;
+}
+input {
+    width: 20em;
+}
+
+.contributor select {
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
+.contributor-button {
+    text-align: right;
+    margin-top: 1em;
+    margin-left: 200px;
+    margin-bottom: 1em;
+    padding-top: 0.3em;
+    font-size: 0.9em;
+    border-top: 1px solid #888;
+    width: 40em;
+}
+
+form {
+    font-size: 0.9em;
+}
+form .left {
+    width: 200px;
+    text-align: right;
+    float: left;
+    margin-bottom: 0.5em;
+}
+
+form .right {
+    margin-left: 210px;
+    margin-bottom: 0.5em;
+}
+
+.hint {
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    font-style: italic;
+}
+
+#cite-nav {
+    display: inline-block;
+    width: 98%;
+    margin-bottom: 0.5em;
+}
+.cite-nav-left {
+    float: left;
+}
+.cite-nav-right {
+    float: right;
+    font-size: 0.9em;
+}
+
+#sourcelist {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    background-color: #f4f4f4;
+    padding: 1em 2em;
+    font-size: 0.9em;
+    border: 1px solid #666;
+}
+#sourcelist ul, #sourcelist li {
+    padding: 0;
+    margin: 0;
+}
+#sourcelist ul {
+    list-style: square;
+    margin: 1em 1.5em 1em 1.5em;
+    line-height: 2em;
+    color: #999999;
+}
+#sourcelist li {
+    margin-left: 1em;
+}
+
+#changesource {
+    margin-left: 0.5em;
+    font-size: 0.8em;
+}
+
+.ui-placeholder {
+    color: #aaa;
+}
