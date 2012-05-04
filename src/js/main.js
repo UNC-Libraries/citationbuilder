@@ -11,11 +11,13 @@ require(["jquery", "jquery.mustache", "order!xmldom", "order!citeproc",
 function($){
          
     $(function() {
-        var params = {};
-        
+        var params = {},
+            cite = {};
+
         $.each(location.search.slice(1).split("&"), function(k,v){
-            var param = v.split("=")[0];
-            var value = v.split("=")[1];
+            var param, value;
+            param = v.split("=")[0];
+            value = v.split("=")[1];
             params[param] = value;
         });
         
@@ -26,26 +28,20 @@ function($){
         if (typeof params.style === "undefined") {
             params['style'] = "apa";
         }
-
-        var cite = {};
         
-        var $style = $.ajax({
+        $.ajax({
             url: 'styles/'+params.style+'.csl',
-            dataType: 'text',
-            context: cite,
-            success: function(data){
-                this.style = data;
-            }
+            dataType: 'text'
+        }).success(function(data) {
+            cite.style = data;
         });
         
-        var $locale = $.ajax({
+        $.ajax({
             url: 'styles/locales-en-US.xml',
-            dataType: 'text',
-            context: cite,
-            success: function(data) {
-                this.locale = {
-                    "en-US": data
-                }
+            dataType: 'text'
+        }).success(function(data) {
+            cite.locale = {
+                "en-US": data
             }
         });
         
@@ -79,20 +75,23 @@ function($){
         });
         
         $("#tabs").on("submit", "form", cite, function(e) {
+            var $form = $(this),
+                formObject, locale, items, Sys, sys, cite, bib, $dialog;
+            
             e.preventDefault();
-            var $form = $(this);
             $form
                 .find("input[name^=author],input[name^=editor],input[name^=translator]")
                     .remove().end()
                 .find(".contributor").each(function(){
-                    var type = $(this).find('select[name="contrib-type"]').val();
-                    var given = $(this).find('input[name="contrib-given"]').val() + " " +
+                    var type, given, family, $last, name, num;
+                    type = $(this).find('select[name="contrib-type"]').val();
+                    given = $(this).find('input[name="contrib-given"]').val() + " " +
                         $(this).find('input[name="contrib-middle"]').val();
-                    var family = $(this).find('input[name="contrib-family"]').val();
+                    family = $(this).find('input[name="contrib-family"]').val();
                     if (family.replace(/\s/g, "")) {
-                        var $last = $form.find("input[name^='"+type+"[']").last();
-                        var name = $last.attr("name");
-                        var num = (typeof name === "string") ?
+                        $last = $form.find("input[name^='"+type+"[']").last();
+                        name = $last.attr("name");
+                        num = (typeof name === "string") ?
                                 parseInt(name.charAt(name.indexOf("[") + 1)) + 1 :
                                 0;
                         $form.append('<input type="hidden" name="'+type+'['+num+'][given]" value="'+given+'" />');
@@ -100,12 +99,11 @@ function($){
                     }
             });
             
-            var formObject = $form.parseIntoObject();
+            formObject = $form.parseIntoObject();
 
-            var locale = e.data.locale;
-            var items = {"ITEM-1": formObject};
-            console.log(items);
-            var Sys = function() {
+            locale = e.data.locale;
+            items = {"ITEM-1": formObject};
+            Sys = function() {
                 return {
                     retrieveLocale: function(lang) {
                         return locale[lang];
@@ -117,11 +115,11 @@ function($){
                 }
             }
 
-            var sys = new Sys();
-            var cite = new CSL.Engine(sys, e.data.style);
+            sys = new Sys();
+            cite = new CSL.Engine(sys, e.data.style);
             cite.updateItems(["ITEM-1"]);
-            var bib = cite.makeBibliography();
-            var $dialog = $("#citation-dialog").length ? $("#citation-dialog") :
+            bib = cite.makeBibliography();
+            $dialog = $("#citation-dialog").length ? $("#citation-dialog") :
                     $("<div id='citation-dialog'/>");
             $dialog.html(bib[1][0]).dialog({modal: true, minWidth: 600, show: "clip", hide: "clip"});
         });
