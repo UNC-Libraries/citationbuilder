@@ -1,10 +1,10 @@
 
 define(["jquery"], function($){
-    $.fn.appendTemplate = function(tmpl, options) {
+    $.fn.appendTemplate = function(tmpl) {
+        var $el = $(this);
         if (typeof tmpl === "string") {
             tmpl = [tmpl];
         }
-        var $el = $(this);
         return $.Deferred(function(dfd){
             var xhr = [];
             $.each(tmpl, function(k,v) {
@@ -18,7 +18,7 @@ define(["jquery"], function($){
             });
             $.when.apply($, xhr)
             .done(function() {
-                dfd.resolve(options);
+                dfd.resolve();
             });
         });
     }

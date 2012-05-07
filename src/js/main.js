@@ -21,11 +21,11 @@ function($){
             params[param] = value;
         });
         
-        if (typeof params.source === "undefined") {
+        if (!("source" in params)) {
             params['source'] = "book";
         }
         
-        if (typeof params.style === "undefined") {
+        if (!("style" in params)) {
             params['style'] = "apa";
         }
         
@@ -46,8 +46,8 @@ function($){
         });
         
         $.when(
-            $("body").appendTemplate('templates/head.mustache', params)
-        ).done(function(params){
+            $("body").appendTemplate('templates/head.mustache')
+        ).done(function(){
             $("#cite-nav").append($.mustache($("#tmpl-head").html(),{
                 style: params.style,
                 source: params.source
