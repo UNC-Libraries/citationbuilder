@@ -17,7 +17,10 @@
     <form action="{{action}}" method="get">
         {{> contributor}}
         <div class="left">Title:</div><div class="right"><input type="text" name="title" size="50"/></div>
-        {{> publication}}
+        <div class="left">Publication Info:</div>
+        <div class="right">
+            <input type="text" name="issued[date-parts][0][]" placeholder="Year" class="year" maxlength="4"/>
+        </div>
         {{> urldoi}}
         <input type="hidden" name="type" value="book" />
         {{> submit}}
