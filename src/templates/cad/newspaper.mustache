@@ -1,8 +1,7 @@
 <script type="x-mustache-tmpl" id="tmpl-newspaper">
 <ul>
     <li><a href="#tabs-1">in print</a></li>
-    <li><a href="#tabs-2">on a web site</a></li>
-    <li><a href="#tabs-3">in a database</a></li>
+    <li><a href="#tabs-2">online</a></li>
 </ul>
 <div id="tabs-1">
     <form action="{{action}}" method="get">
@@ -23,22 +22,6 @@
         {{> issued}}
         {{> pages}}
         <div class="left">URL:</div><div class="right"><input type="text" name="URL" /></div>
-        <input type="hidden" name="type" value="article-newspaper" />
-        {{> submit}}
-    </form>
-</div>
-<div id="tabs-3">
-    <form action="{{action}}" method="get">
-        {{> contributor}}
-        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
-        <div class="left">Newspaper title:</div><div class="right"><input type="text" name="container-title" /></div>
-        {{> issued}}
-        {{> pages}}
-        <div class="left">Persistent URL:</div>
-        <div class="right">
-            <input type="text" name="URL" />
-            <span class="hint">if no persistent URL, use database name</span>
-        </div>
         <input type="hidden" name="type" value="article-newspaper" />
         {{> submit}}
     </form>

@@ -1,9 +1,8 @@
 <script id="tmpl-book" type="text/x-mustache-tmpl">
 <ul>
     <li><a href="#tabs-1">in print</a></li>
-    <li><a href="#tabs-2">on a web site</a></li>
-    <li><a href="#tabs-3">in a database</a></li>
-    <li><a href="#tabs-4">downloaded book</a></li>
+    <li><a href="#tabs-2">online</a></li>
+    <li><a href="#tabs-3">downloaded book</a></li>
 </ul>
 <div id="tabs-1">
     <form action="{{action}}" method="get">
@@ -19,24 +18,13 @@
         {{> contributor}}
         <div class="left">Title:</div><div class="right"><input type="text" name="title" size="50"/></div>
         {{> publication}}
-        <div class="left">Web site title:</div><div class="right"><input type="text" name="archive" /></div>
+        <div class="left">Web site or database title:</div><div class="right"><input type="text" name="archive" /></div>
         {{> accessed}}
         <input type="hidden" name="type" value="book" />
         {{> submit}}
     </form>
 </div>
 <div id="tabs-3">
-    <form action="{{action}}" method="get">
-        {{> contributor}}
-        <div class="left">Title:</div><div class="right"><input type="text" name="title" size="50"/></div>
-        {{> publication}}
-        <div class="left">Database title:</div><div class="right"><input type="text" name="archive" /></div>
-        {{> accessed}}
-        <input type="hidden" name="type" value="book" />
-        {{> submit}}
-    </form>
-</div>
-<div id="tabs-4">
     <form action="{{action}}" method="get">
         {{> contributor}}
         <div class="left">Title:</div><div class="right"><input type="text" name="title" size="50"/></div>

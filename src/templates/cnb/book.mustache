@@ -1,9 +1,8 @@
 <script type="x-mustache-tmpl" id="tmpl-book">
 <ul>
     <li><a href="#book-1">in print</a></li>
-    <li><a href="#book-2">on a web site</a></li>
-    <li><a href="#book-3">in a database</a></li>
-    <li><a href="#book-4">downloaded book</a></li>
+    <li><a href="#book-2">online</a></li>
+    <li><a href="#book-3">downloaded book</a></li>
 </ul>
 <div id="book-1">
     <form action="{{action}}" method="get">
@@ -47,31 +46,6 @@
     </form>
 </div>
 <div id="book-3">
-    <form action="{{action}}" method="get">
-        {{> contributor}}
-        <div class="left">Title:</div><div class="right"><input type="text" name="title" /></div>
-        <div class="left">Edition:</div>
-        <div class="right">
-            <input type="text" name="edition" class="medium"/>
-            <span class="hint">only if not first (ex: 2nd ed.)</span>
-        </div>
-        <div class="left">Series title:</div><div class="right"><input type="text" name="container-title"/></div>
-        <div class="left">Volume:</div>
-        <div class="right">
-            <input type="text" name="volume" class="short"/>
-            <span class="hint">if part of a series</span>
-        </div>
-        {{> publication}}
-        <div class="left">Persistent URL:</div>
-        <div class="right">
-            <input type="text" name="URL"/>
-            <span class="hint">if no persistent URL, use database name</span>
-        </div>
-        <input type="hidden" name="type" value="book" />
-        {{> submit}}
-    </form>
-</div>
-<div id="book-4">
     <form action="{{action}}" method="get">
         {{> contributor}}
         <div class="left">Title:</div><div class="right"><input type="text" name="title" /></div>

@@ -49,14 +49,14 @@ form {
     font-size: 0.9em;
 }
 form .left {
-    width: 200px;
+    width: 220px;
     text-align: right;
     float: left;
     margin-bottom: 0.5em;
 }
 
 form .right {
-    margin-left: 210px;
+    margin-left: 230px;
     margin-bottom: 0.5em;
 }
 
