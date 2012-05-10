@@ -10,7 +10,7 @@ input {
 
 input[type=button] {
     padding: 0;
-    width: 7em;
+    width: 8em;
 }
 input[type=submit] {
     width: 5em;
