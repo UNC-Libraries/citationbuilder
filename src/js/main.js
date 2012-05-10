@@ -85,8 +85,8 @@ function($){
                 .find(".contributor").each(function(){
                     var type, given, family, $last, name, num;
                     type = $(this).find('select[name="contrib-type"]').val();
-                    given = $(this).find('input[name="contrib-given"]').val() + " " +
-                        $(this).find('input[name="contrib-middle"]').val();
+                    given = $.trim([$(this).find('input[name="contrib-given"]').val(),
+                            $(this).find('input[name="contrib-middle"]').val()].join(" "));
                     family = $(this).find('input[name="contrib-family"]').val();
                     if (family.replace(/\s/g, "")) {
                         $last = $form.find("input[name^='"+type+"[']").last();
