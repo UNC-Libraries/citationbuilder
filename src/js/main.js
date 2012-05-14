@@ -12,7 +12,15 @@ function($){
          
     $(function() {
         var params = {},
-            cite = {};
+            cite = {},
+            sourcemap = {
+                book: "book (in entirety)",
+                chapter: "chapter or essay from a book",
+                magazine: "magazine article",
+                newspaper: "newspaper article",
+                journal: "scholarly journal article",
+                website: "web site"
+            };
 
         $.each(location.search.slice(1).split("&"), function(k,v){
             var param, value;
@@ -50,7 +58,8 @@ function($){
         ).done(function(){
             $("#cite-nav").append($.mustache($("#tmpl-head").html(),{
                 style: params.style,
-                source: params.source
+                source: params.source,
+                sourcefull: sourcemap[params.source]
             })).find("a[data-style="+params.style+"]").replaceWith(
                 $("a[data-style="+params.style+"]").text()
             );
