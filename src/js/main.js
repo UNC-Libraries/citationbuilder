@@ -64,22 +64,22 @@ function($){
             'templates/'+params.style+'/'+params.source+'.mustache'])
         ).done(function(){
             $("#tabs").append($.mustache($("#tmpl-"+params.source).html(), {}, {
-                contributor: $("#tmpl-contributor").text(),
-                publication: $("#tmpl-publication").text(),
-                submit: $("#tmpl-submit").text(),
-                urldoi: $("#tmpl-urldoi").text(),
-                pages: $("#tmpl-pages").text(),
-                volume: $("#tmpl-volume").text(),
-                accessed: $("#tmpl-accessed").text(),
-                issued: $("#tmpl-issued").text()
+                contributor: $("#tmpl-contributor").html(),
+                publication: $("#tmpl-publication").html(),
+                submit: $("#tmpl-submit").html(),
+                urldoi: $("#tmpl-urldoi").html(),
+                pages: $("#tmpl-pages").html(),
+                volume: $("#tmpl-volume").html(),
+                accessed: $("#tmpl-accessed").html(),
+                issued: $("#tmpl-issued").html()
             }));
             $("#tabs").tabs();
             $("input[type=text]").placeholder();
         });
         
-        $("#tabs").on("submit", "form", cite, function(e) {
+        $("#tabs").on("submit", "form", function(e) {
             var $form = $(this),
-                formObject, locale, items, Sys, sys, cite, bib, $dialog;
+                formObject, locale, items, Sys, sys, bib, citation, $dialog;
             
             e.preventDefault();
             $form
@@ -104,7 +104,7 @@ function($){
             
             formObject = $form.parseIntoObject();
 
-            locale = e.data.locale;
+            locale = cite.locale;
             items = {"ITEM-1": formObject};
             Sys = function() {
                 return {
@@ -119,9 +119,9 @@ function($){
             }
 
             sys = new Sys();
-            cite = new CSL.Engine(sys, e.data.style);
-            cite.updateItems(["ITEM-1"]);
-            bib = cite.makeBibliography();
+            citation = new CSL.Engine(sys, cite.style);
+            citation.updateItems(["ITEM-1"]);
+            bib = citation.makeBibliography();
             $dialog = $("#citation-dialog").length ? $("#citation-dialog") :
                     $("<div id='citation-dialog'/>");
             $dialog.html(bib[1][0]).dialog({modal: true, minWidth: 600, show: "clip", hide: "clip"});
