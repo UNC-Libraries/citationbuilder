@@ -25,7 +25,7 @@
           <choose>
             <if variable="author">
               <names variable="editor">
-                <label form="verb-short" text-case="capitalize-first" suffix=". " strip-periods="true"/>
+                <label form="verb" text-case="capitalize-first" suffix=" " strip-periods="true"/>
                 <name and="text" delimiter=", "/>
               </names>
             </if>
@@ -33,7 +33,7 @@
           <choose>
             <if variable="author editor" match="any">
               <names variable="translator">
-                <label form="verb-short" text-case="capitalize-first" suffix=". " strip-periods="true"/>
+                <label form="verb" text-case="capitalize-first" suffix=" " strip-periods="true"/>
                 <name and="text" delimiter=", "/>
               </names>
             </if>
@@ -49,7 +49,7 @@
           <choose>
             <if variable="author">
               <names variable="editor">
-                <label form="verb-short" prefix=" " text-case="lowercase" suffix=". " strip-periods="true"/>
+                <label form="verb" prefix=" " text-case="lowercase" suffix=" " strip-periods="true"/>
                 <name and="text" delimiter=", "/>
               </names>
               <choose>
@@ -67,7 +67,7 @@
           <choose>
             <if variable="author editor" match="any">
               <names variable="translator">
-                <label form="verb-short" prefix=" " text-case="lowercase" suffix=". " strip-periods="true"/>
+                <label form="verb" prefix=" " text-case="lowercase" suffix=" " strip-periods="true"/>
                 <name and="text" delimiter=", "/>
               </names>
             </if>
@@ -155,6 +155,18 @@
         </else-if>
       </choose>
       <text variable="DOI" prefix="doi:"/>
+      <group delimiter="">
+        <choose>
+            <if type="webpage">
+                <text term="accessed" text-case="capitalize-first"
+                    strip-periods="true" suffix=" " />
+                <date variable="accessed">
+                    <date-part name="month" suffix=" " />
+                    <date-part name="day" />
+                </date>
+            </if>
+        </choose>
+      </group>
       <choose>
         <if type="legal_case" match="none">
           <text variable="URL"/>

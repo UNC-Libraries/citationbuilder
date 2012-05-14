@@ -5,11 +5,10 @@
 <div id="tabs-1">
     <form action="{{action}}" method="get">
         {{> contributor}}
-        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
-        <div class="left">Web site title:</div><div class="right"><input type="text" name="container-title"/></div>
+        <div class="left">Title:</div><div class="right"><input type="text" name="title" /></div>
         <div class="left">Electronically published:</div><div class="right"><input type="text" name="issued[raw]" placeholder="dd-mm-yyyy" class="medium"/></div>
         {{> accessed}}
-        <input type="hidden" name="type" value="book" />
+        <input type="hidden" name="type" value="webpage" />
         {{> submit}}
     </form>
 </div>
