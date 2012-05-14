@@ -142,6 +142,7 @@
             <text variable="archive" prefix=" " suffix=". " font-style="italic" />
             <text value="Web" prefix=" "/>
             <text prefix=". " suffix="." macro="access"/>
+            <text variable="URL" prefix=" &lt;" suffix="&gt;." />
           </if>
           <else-if variable="medium">
               <text variable="medium" prefix=" "/>
@@ -360,8 +361,8 @@
                     <date-part name="month" form="short" suffix=" " strip-periods="false"/>
                     <date-part name="year"/>
                 </date>
-                <text macro="edition" prefix=" "/>
             </group>
+                <text macro="edition" prefix=", "/>
             <text macro="pages" suffix="." prefix=": "/>
         </else-if>
         <else>
@@ -383,6 +384,7 @@
                   <text macro="pages" prefix=" "/>
                 </if>
                 <else>
+                    <group delimiter="">
                   <date variable="issued">
                     <date-part name="day" suffix=" "/>
                     <date-part name="month" form="short" suffix=" " strip-periods="false"/>
@@ -396,6 +398,7 @@
                       <text macro="pages" prefix=": "/>
                     </else>
                   </choose>
+                  </group>
                 </else>
               </choose>
             </group>
