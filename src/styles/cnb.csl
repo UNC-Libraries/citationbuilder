@@ -23,6 +23,11 @@
     <updated>2012-01-01T00:00:00+00:00</updated>
     <rights>This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/</rights>
   </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="modified" form="long">Last modified</term>
+    </terms>
+  </locale>
   <macro name="secondary-contributors">
     <choose>
       <if type="chapter paper-conference" match="none">
@@ -343,6 +348,10 @@
               <date-part name="year"/>
             </date>
           </else-if>
+          <else-if type="webpage">
+            <text term="modified" text-case="capitalize-first" prefix=". " suffix=" " />
+            <date variable="issued" form="text" date-parts="year-month-day" />
+          </else-if>
           <else>
             <date variable="issued">
               <date-part name="month" suffix=" "/>
@@ -352,9 +361,9 @@
           </else>
         </choose>
       </if>
-      <else>
+      <else-if type="webpage" match="none">
         <text term="no date" form="short"/>
-      </else>
+      </else-if>
     </choose>
   </macro>
   <macro name="locators-chapter">
@@ -417,6 +426,18 @@
           <text variable="archive_location" prefix="(" suffix=")"/>
         </group>
       </if>
+      <else-if type="webpage">
+        <choose>
+          <if variable="issued" match="none">
+            <text term="accessed" text-case="capitalize-first" suffix=" " />
+            <date variable="accessed" form="text" date-parts="year-month-day" />
+          </if>
+        </choose>
+      </else-if>
+      <else-if type="article-magazine">
+        <text term="accessed" text-case="capitalize-first" suffix=" " />
+        <date variable="accessed" form="text" date-parts="year-month-day" />
+      </else-if>
       <else>
         <group delimiter=". ">
           <text variable="archive_location" text-case="capitalize-first"/>
@@ -453,6 +474,9 @@
           <text macro="issued"/>
         </group>
       </else-if>
+      <else-if type="webpage">
+        <text macro="issued"/>
+      </else-if>
       <else>
         <text macro="issued" prefix=", "/>
       </else>
@@ -464,13 +488,20 @@
         <if type="graphic report" match="any">
           <text macro="archive"/>
         </if>
-        <else-if type="article-journal article-magazine article-newspaper bill book chapter graphic legal_case legislation motion_picture paper-conference report song" match="none">
+        <else-if type="article-journal article-newspaper bill book chapter graphic legal_case legislation motion_picture paper-conference report song" match="none">
           <text macro="archive"/>
         </else-if>
       </choose>
       <choose>
         <if type="legal_case" match="none">
-          <text variable="URL"/>
+          <choose>
+            <if variable="URL">
+              <text variable="URL"/>
+            </if>
+            <else>
+                <text variable="DOI" />
+            </else>
+          </choose>
         </if>
       </choose>
     </group>
