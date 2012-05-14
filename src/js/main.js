@@ -1,12 +1,6 @@
 
-require.config({
-    paths: {
-        jqueryui: "jquery-ui-1.8.19.custom.min"
-    }
-});
-
 require(["jquery", "jquery.mustache", "order!xmldom", "order!citeproc",
-            "jqueryui", "jquery.placeholder",
+            "jquery-ui-1.8.19.custom.min", "jquery.placeholder",
             "jquery.parseintoobject", "jquery.appendtemplate"],
 function($){
          
