@@ -45,7 +45,9 @@
  * recipient may use your version of this file under either the CPAL
  * or the [AGPLv3] License.”
  */
-var CSL_IS_IE;
+if ("undefined" === typeof CSL_IS_IE) {
+    var CSL_IS_IE;
+};
 var CSL_CHROME = function () {
     if ("undefined" == typeof DOMParser || CSL_IS_IE) {
         CSL_IS_IE = true;
@@ -272,7 +274,7 @@ CSL_CHROME.prototype.setAttribute = function (myxml,attr,val) {
     if (!myxml.ownerDocument) {
         myxml = myxml.firstChild;
     }
-    if (myxml.setAttribute) {
+    if (["function", "unknown"].indexOf(typeof myxml.setAttribute) > -1) {
         myxml.setAttribute(attr, val);
     }
     return false;
