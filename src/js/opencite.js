@@ -7,9 +7,10 @@ require(["jquery",
     "text!../styles/locales-en-US.xml", "order!xmldom", "order!citeproc"],
 
 function($, apa, mla, cad, cnb, loc) {
-    var styles, query, author, items, locale, i, pair, value,
-        params = [];
-        
+    var styles, query, items, locale, i, pair, value,
+        params = [],
+        author = undefined;
+
     styles = [
         {
             style: "APA",
@@ -28,21 +29,26 @@ function($, apa, mla, cad, cnb, loc) {
             csl: cnb
         }
     ];
-    
+
     query = window.location.search.substr(1).split("&");
     params = [];
+
     for (i = 0; i < query.length; i++) {
         pair = query[i].split("=");
         value = pair[1].replace(/\+/g, " ");
         params[pair[0]] = decodeURIComponent(value);
     }
-    author = params["rft.aulast"] ? 
-        [{
+
+    if (params["rft.aulast"]) {
+        var given = $.trim(
+            [params["rft.aufirst"], params["rft.aumiddle"]].join(" ")) ||
+            undefined;
+        author = [{
             "family": params["rft.aulast"],
-            "given": params["rft.aufirst"] + " " + params["rft.aumiddle"]
-        }] :
-        undefined;
-    
+            "given": given
+        }];
+    }
+
     items = {
         "ITEM-1": {
             "title": params["rft.title"],
@@ -58,14 +64,14 @@ function($, apa, mla, cad, cnb, loc) {
             "id": "ITEM-1"
         }
     }
-    
+
     locale = {
         "en-US": loc
     }
-    
+
     $(function() {
         var i, Sys, sys, cite, bib;
-        
+
         Sys = function() {
             return {
                 retrieveLocale: function(lang) {
