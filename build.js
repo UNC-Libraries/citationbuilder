@@ -7,6 +7,10 @@
         {
             name: "main",
             exclude: ["jquery"]
+        },
+        {
+            name: "opencite",
+            exclude: ["jquery"]
         }
     ]
 })
