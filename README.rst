@@ -2,22 +2,41 @@ Citation Builder
 =====================================================
 
 Citation Builder is an application that generates citations from user entered 
-form data.
+form data. This is built using `citeproc-js <https://bitbucket.org/fbennett/citeproc-js>`_
+and CSL styles from http://citationstyles.org/.
 
-This is inspired by the Citation Builder application developed by NCSU
-(https://github.com/phpforfree/citationbuilder).
+See http://www.lib.unc.edu/house/citationbuilder/ for an example.
+
 
 Building
 --------
 
+This step is optional, though it is recommended that you at least use some form
+of minification in production as the citeproc-js library is large.
+
 Citation Builder can be built using the `RequireJS optimizer
-<http://requirejs.org/docs/optimization.html>`_ (when using Node)::
+<http://requirejs.org/docs/optimization.html>`_. For example, when using Node,
+from the project root::
 
 $ r.js -o build.js
 
 Note that while the RequireJS optimizer copies over all the files in the js directory,
 the only javascript files that are needed once it's built are ``main.js`` and
-``require-jquery.js``.
+``require-jquery.js``. If you want to use the OpenURL citation feature, you will
+need ``opencite.js`` as well.
+
+Installing
+----------
+
+After Citation Builder has been built, upload the ``target`` directory and
+modify index-example.html and opencite-example.html. If you skipped the build
+step, use the ``src`` directory instead.
+
+OpenURL Support
+---------------
+
+The ``opencite.js`` script (and ``opencite-example.html``) provides minimal support
+for generating citations from an OpenURL URL.
 
 Adding a new style/source
 -------------------------
@@ -40,7 +59,8 @@ Form field names should match the CSL variables for the associated style. Some
 data massaging is required for contributors, so you should use the contributor
 partial rather than creating your own contributor fields.
 
-:Author:
-    Mike Graves
-:Copyright:
-    Copyright (c) 2012 University Library, University of North Carolina. See LICENSE for details.
+Licensing
+---------
+
+Unless otherwise noted in the source, this work is released under GNU General
+Public License (see LICENSE for details).
