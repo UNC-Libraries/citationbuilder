@@ -2,7 +2,7 @@
 ({
     appDir: "src",
     baseUrl: "js",
-    dir: "target",
+    dir: "build",
     modules: [
         {
             name: "main",
