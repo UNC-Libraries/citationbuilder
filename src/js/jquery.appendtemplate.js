@@ -21,5 +21,5 @@ define(["jquery"], function($){
                 dfd.resolve();
             });
         });
-    }
+    };
 });
