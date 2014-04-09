@@ -1,0 +1,33 @@
+<script type="x-mustache-tmpl" id="tmpl-journal">
+<ul>
+    <li><a href="#tabs-1">in print</a></li>
+    <li><a href="#tabs-2">online</a></li>
+</ul>
+<div id="tabs-1">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Journal title:</div><div class="right"><input type="text" name="container-title" /></div>
+        {{> volume}}
+        <div class="left">Year published:</div>
+        <div class="right"><input type="text" name="issued[raw]" maxlength="4" class="year" placeholder="yyyy" /></div>
+        {{> pages}}
+        <input type="hidden" name="type" value="article-journal" />
+        {{> submit}}
+    </form>
+</div>
+<div id="tabs-2">
+    <form action="{{action}}" method="get">
+        {{> contributor}}
+        <div class="left">Article title:</div><div class="right"><input type="text" name="title" /></div>
+        <div class="left">Journal title:</div><div class="right"><input type="text" name="container-title" /></div>
+        {{> volume}}
+        <div class="left">Year published:</div>
+        <div class="right"><input type="text" name="issued[raw]" maxlength="4" class="year" placeholder="yyyy" /></div>
+        {{> pages}}
+        {{> urldoi}}
+        <input type="hidden" name="type" value="article-journal" />
+        {{> submit}}
+    </form>
+</div>
+</script>
