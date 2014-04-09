@@ -9,57 +9,58 @@
  * @license http://opensource.org/licenses/bsd-license.php New BSD License
  * @author Paul Serby <paul.serby@clock.co.uk>
  */
-(function ($) {
-	$.fn.placeholder = function (text) {
 
-	return this.each(function () {
+define(['jquery'], function($) {
 
-			var
-				context = $(this),
-				placeholderText,
-				nativePlaceholderSupport = ('placeholder' in document.createElement('input'));
+    $.fn.placeholder = function (text) {
 
-			function onBlur(event) {
-				checkIfEmpty($(event.target));
-			}
+        return this.each(function () {
 
-			function checkIfEmpty() {
-				if (context.val() === '') {
-					if (context.attr('type') === 'password') {
-						try {
-							context.attr('type', 'text');
-						} catch(e) {
-							return false;
-						}
-					}
-					context.val(placeholderText);
-					context.addClass('ui-placeholder');
-				}
-			}
+            var context = $(this),
+                placeholderText,
+                nativePlaceholderSupport = ('placeholder' in document.createElement('input'));
 
-			function onFocus(event) {
-				context.removeClass('ui-placeholder');
-				if (context.val() === placeholderText) {
-					context.val('');
-				}
-			}
+            function onBlur(event) {
+                checkIfEmpty($(event.target));
+            }
 
-			if (text === undefined) {
-				placeholderText = $(this).attr('placeholder');
-			} else {
-				placeholderText = text;
-			}
+            function checkIfEmpty() {
+                if (context.val() === '') {
+                    if (context.attr('type') === 'password') {
+                        try {
+                            context.attr('type', 'text');
+                        } catch(e) {
+                            return false;
+                        }
+                    }
+                    context.val(placeholderText);
+                    context.addClass('ui-placeholder');
+                }
+            }
 
-			if (!nativePlaceholderSupport) {
-				checkIfEmpty(context.blur(onBlur).focus(onFocus).addClass('ui-placeholder'));
-				context.parents('form').submit(function(event) {
-					if (context.val() === placeholderText) {
-						context.val('');
-					}
-				});
-			} else {
-				context.attr('placeholder', placeholderText);
-			}
-		});
-	};
-})(jQuery);
+            function onFocus(event) {
+                context.removeClass('ui-placeholder');
+                if (context.val() === placeholderText) {
+                    context.val('');
+                }
+            }
+
+            if (text === undefined) {
+                placeholderText = $(this).attr('placeholder');
+            } else {
+                placeholderText = text;
+            }
+
+            if (!nativePlaceholderSupport) {
+                checkIfEmpty(context.blur(onBlur).focus(onFocus).addClass('ui-placeholder'));
+                context.parents('form').submit(function(event) {
+                    if (context.val() === placeholderText) {
+                        context.val('');
+                    }
+                });
+            } else {
+                context.attr('placeholder', placeholderText);
+            }
+        });
+    };
+});
