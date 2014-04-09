@@ -25,7 +25,7 @@ define(["jquery"], function($){
             if ($(this).val().length != 0) {
                 extract(obj, $(this).attr("name").replace(/\]/g,"").split("["), $(this).val());
             }
-        })
+        });
         return obj;
-    }
+    };
 });
