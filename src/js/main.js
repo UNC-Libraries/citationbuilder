@@ -113,8 +113,8 @@ require(["jquery", "mustache", "order!xmldom", "order!citeproc",
                         retrieveItem: function(id) {
                             return items[id];
                         }
-                    }
-                }
+                    };
+                };
 
                 sys = new Sys();
                 citation = new CSL.Engine(sys, cite.style);
