@@ -4,9 +4,10 @@ require(["jquery",
     "text!../styles/mla.csl!strip",
     "text!../styles/cad.csl!strip",
     "text!../styles/cnb.csl!strip",
+    "text!../styles/cse-ad.csl!strip",
     "text!../styles/locales-en-US.xml", "order!xmldom", "order!citeproc"],
 
-function($, apa, mla, cad, cnb, loc) {
+function($, apa, mla, cad, cnb, cse, loc) {
     var styles, query, items, locale, i, pair, value,
         params = [],
         author = undefined;
@@ -27,6 +28,10 @@ function($, apa, mla, cad, cnb, loc) {
         {
             style: "Chicago (Notes and Bibliography)",
             csl: cnb
+        }
+        {
+            style: "Council of Science Editors (Author-Date)",
+            csl: cse
         }
     ];
 
@@ -63,11 +68,11 @@ function($, apa, mla, cad, cnb, loc) {
             "type": "book",
             "id": "ITEM-1"
         }
-    }
+    };
 
     locale = {
         "en-US": loc
-    }
+    };
 
     $(function() {
         var i, Sys, sys, cite, bib;
@@ -81,8 +86,8 @@ function($, apa, mla, cad, cnb, loc) {
                 retrieveItem: function(id) {
                     return items[id];
                 }
-            }
-        }
+            };
+        };
 
         sys = new Sys;
         for (i = 0; i < styles.length; i++) {
