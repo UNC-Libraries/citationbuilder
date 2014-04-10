@@ -22,7 +22,7 @@ $ r.js -o build.js
 
 Note that while the RequireJS optimizer copies over all the files in the js directory,
 the only javascript files that are needed once it's built are ``main.js`` and
-``require-jquery.js``. If you want to use the OpenURL citation feature, you will
+``require.js``. If you want to use the OpenURL citation feature, you will
 need ``opencite.js`` as well.
 
 Installing
