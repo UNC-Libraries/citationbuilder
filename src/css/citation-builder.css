@@ -1,4 +1,8 @@
 
+#tabs {
+   float: left;
+   width: 100%;
+}
 h2 {
     margin-bottom: 1em;
     border-bottom: 1px solid #ccc;
