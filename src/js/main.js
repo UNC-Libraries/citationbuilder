@@ -1,3 +1,6 @@
+require.config({
+    baseUrl: 'js'
+});
 require(["jquery", "mustache", "order!xmldom", "order!citeproc",
          "jquery-ui", "jquery.placeholder",
          "jquery.parseintoobject", "jquery.appendtemplate"],
