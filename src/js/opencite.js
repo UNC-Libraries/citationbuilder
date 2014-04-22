@@ -28,7 +28,7 @@ function($, apa, mla, cad, cnb, cse, loc) {
         {
             style: "Chicago (Notes and Bibliography)",
             csl: cnb
-        }
+        },
         {
             style: "Council of Science Editors (Author-Date)",
             csl: cse
