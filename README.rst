@@ -5,7 +5,7 @@ Citation Builder is an application that generates citations from user entered
 form data. This is built using `citeproc-js <https://bitbucket.org/fbennett/citeproc-js>`_
 and CSL styles from http://citationstyles.org/.
 
-See http://www.lib.unc.edu/house/citationbuilder/ for an example.
+See http://library.unc.edu/citationbuilder/ for an example.
 
 
 Building
@@ -28,7 +28,7 @@ need ``opencite.js`` as well.
 Installing
 ----------
 
-After Citation Builder has been built, upload the ``target`` directory and
+After Citation Builder has been built, upload the ``build`` directory and
 modify index-example.html and opencite-example.html. If you skipped the build
 step, use the ``src`` directory instead.
 
